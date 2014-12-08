@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "scuttlebot": "~1.0.0",
-    "ssbplug-phoenix": "~1.0.4"
+    "ssbplug-phoenix": "~1.0.5"
   },
   "author": "Paul Frazee <pfrazee@gmail.com>",
   "license": "MIT"
