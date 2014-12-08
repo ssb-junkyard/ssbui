@@ -50,7 +50,7 @@ catch(e) {
 	  if (err) console.error('Attempted to make friends with grimwire.com but failed!', err.message)
 	  else console.log('Made friends with grimwire.com')
 	})
-	server.feed.add('pub', {address: 'grimwire.com:2000'}, function(err) {
+	server.feed.add('pub', {address: {host:'grimwire.com', port:2000}}, function(err) {
 		if (err) console.error('Attempted to announce grimwire.com but failed!', err)
 		else console.log('Announced grimwire.com')
 	})
