@@ -7,6 +7,8 @@ npm install -g ssbui
 ssbui
 ```
 
+If this gives you a permissions error, [use the method here (preferred)](http://stackoverflow.com/questions/19352976/npm-modules-wont-install-globally-without-sudo) or install and run using sudo.
+
 Then open `localhost:2000` in your browser and get started!
 
 ## Hosting a Public Relay
