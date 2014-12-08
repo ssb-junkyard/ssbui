@@ -1,0 +1,57 @@
+#! /usr/bin/env node
+
+if (process.argv.length > 2)
+	return require('scuttlebot/client')
+
+var server = require('scuttlebot')(require('scuttlebot/config'))
+server
+  // .use(require('scuttlebot/plugins/logging'))
+  .use(require('scuttlebot/plugins/gossip'))
+  .use(require('scuttlebot/plugins/replicate'))
+  .use(require('scuttlebot/plugins/local'))
+  .use(require('scuttlebot/plugins/invite'))
+  .use(require('ssbplug-phoenix'))
+
+console.log('Now serving at localhost:'+server.config.port)
+console.log('Using profile at', server.config.path)
+
+// :TEMP:
+// for the conference, auto-invite new users to grimwire.com
+var CONF_INVITE = 'zeD8gYoOxyQHdFgcZ0TWmH9w/EbLfoPaoSQbpvl1PSI='
+var PAUL = 'r+MiCfhoSQm10BfneXkmtG/H5sioWZW0yrPOkXr5i94=.blake2s'
+var DOMINIC = ':TODO:'
+var fs = require('fs')
+var path = require('path')
+
+// only do setup once
+var fp = path.join(__dirname, '.jsfestinvited')
+try { fs.statSync(fp) }
+catch(e) {
+	fs.writeFileSync(fp, 'yep')
+
+	// follow paul and dominic
+  server.feed.add({ type: 'follows', feed: PAUL, rel: 'follows' }, function(err) {
+  	if (err) console.error('Attempted to follow paul but failed!', err)
+		else console.log('Followed paul')
+  })
+  // server.feed.add({ type: 'follows', feed: DOMINIC, rel: 'follows' }, function(err) {
+  // 	if (err) console.error('Attempted to follow dominic but failed!', err)
+		// else console.log('Followed dominic')
+  // })
+
+	// use grimwire.com invite
+	var rpc = server.connect({ host: 'grimwire.com', port: 2000 })
+	var hmacd = server.options.signObjHmac(CONF_INVITE, {
+	  keyId: server.options.hash(CONF_INVITE, 'base64'),
+	  feed: server.feed.id,
+	  ts: Date.now()
+	})
+	rpc.invite.use(hmacd, function (err, msg) {
+	  if (err) console.error('Attempted to make friends with grimwire.com but failed!', err.message)
+	  else console.log('Made friends with grimwire.com')
+	})
+	server.feed.add('pub', {address: 'grimwire.com:2000'}, function(err) {
+		if (err) console.error('Attempted to announce grimwire.com but failed!', err)
+		else console.log('Announced grimwire.com')
+	})
+}

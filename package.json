@@ -1,0 +1,17 @@
+{
+  "name": "ssbui",
+  "description": "the first client for the ssb network",
+  "version": "1.0.0",
+  "homepage": "https://github.com/pfraze/ssbui",
+  "main": "main.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/pfraze/ssbui.git"
+  },
+  "dependencies": {
+    "scuttlebot": "~1.0.0",
+    "ssbplug-phoenix": "~1.0.4"
+  },
+  "author": "Paul Frazee <pfrazee@gmail.com>",
+  "license": "MIT"
+}
