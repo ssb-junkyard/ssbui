@@ -3,7 +3,10 @@
   "description": "the first client for the ssb network",
   "version": "1.0.0",
   "homepage": "https://github.com/pfraze/ssbui",
-  "main": "main.js",
+  "main": "ssbui",
+  "bin": {
+    "ssbui": "./ssbui"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/pfraze/ssbui.git"
