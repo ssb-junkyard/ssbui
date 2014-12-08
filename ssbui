@@ -30,11 +30,11 @@ catch(e) {
 	fs.writeFileSync(fp, 'yep')
 
 	// follow paul and dominic
-  server.feed.add({ type: 'follows', feed: PAUL, rel: 'follows' }, function(err) {
+  server.feed.add({ type: 'follow', feed: PAUL, rel: 'follows' }, function(err) {
   	if (err) console.error('Attempted to follow paul but failed!', err)
 		else console.log('Followed paul')
   })
-  // server.feed.add({ type: 'follows', feed: DOMINIC, rel: 'follows' }, function(err) {
+  // server.feed.add({ type: 'follow', feed: DOMINIC, rel: 'follows' }, function(err) {
   // 	if (err) console.error('Attempted to follow dominic but failed!', err)
 		// else console.log('Followed dominic')
   // })
