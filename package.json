@@ -1,7 +1,7 @@
 {
   "name": "ssbui",
   "description": "the first client for the ssb network",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "homepage": "https://github.com/pfraze/ssbui",
   "main": "ssbui",
   "bin": {
