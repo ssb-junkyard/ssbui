@@ -19,7 +19,7 @@ console.log('Using profile at', server.config.path)
 // for the conference, auto-invite new users to grimwire.com
 var CONF_INVITE = 'zeD8gYoOxyQHdFgcZ0TWmH9w/EbLfoPaoSQbpvl1PSI='
 var PAUL = 'r+MiCfhoSQm10BfneXkmtG/H5sioWZW0yrPOkXr5i94=.blake2s'
-var DOMINIC = ':TODO:'
+var DOMINIC = 'AfuT8u5+02H4gg3WzrY6IDZiHklwMba0zrO12M+t0NU=.blake2s'
 var fs = require('fs')
 var path = require('path')
 
@@ -34,10 +34,10 @@ catch(e) {
     if (err) console.error('Attempted to follow paul but failed!', err)
     else console.log('Followed paul')
   })
-  // server.feed.add({ type: 'follow', feed: DOMINIC, rel: 'follows' }, function(err) {
-  //  if (err) console.error('Attempted to follow dominic but failed!', err)
-    // else console.log('Followed dominic')
-  // })
+  server.feed.add({ type: 'follow', feed: DOMINIC, rel: 'follows' }, function(err) {
+    if (err) console.error('Attempted to follow dominic but failed!', err)
+    else console.log('Followed dominic')
+  })
 
   // use grimwire.com invite
   var rpc = server.connect({ host: 'grimwire.com', port: 2000 })
