@@ -1,7 +1,7 @@
 #! /usr/bin/env node
 
 if (process.argv.length > 2)
-	return require('scuttlebot/client')
+  return require('scuttlebot/client')
 
 var server = require('scuttlebot')(require('scuttlebot/config'))
 server
@@ -27,31 +27,31 @@ var path = require('path')
 var fp = path.join(__dirname, '.jsfestinvited')
 try { fs.statSync(fp) }
 catch(e) {
-	fs.writeFileSync(fp, 'yep')
+  fs.writeFileSync(fp, 'yep')
 
-	// follow paul and dominic
+  // follow paul and dominic
   server.feed.add({ type: 'follow', feed: PAUL, rel: 'follows' }, function(err) {
-  	if (err) console.error('Attempted to follow paul but failed!', err)
-		else console.log('Followed paul')
+    if (err) console.error('Attempted to follow paul but failed!', err)
+    else console.log('Followed paul')
   })
   // server.feed.add({ type: 'follow', feed: DOMINIC, rel: 'follows' }, function(err) {
-  // 	if (err) console.error('Attempted to follow dominic but failed!', err)
-		// else console.log('Followed dominic')
+  //  if (err) console.error('Attempted to follow dominic but failed!', err)
+    // else console.log('Followed dominic')
   // })
 
-	// use grimwire.com invite
-	var rpc = server.connect({ host: 'grimwire.com', port: 2000 })
-	var hmacd = server.options.signObjHmac(CONF_INVITE, {
-	  keyId: server.options.hash(CONF_INVITE, 'base64'),
-	  feed: server.feed.id,
-	  ts: Date.now()
-	})
-	rpc.invite.use(hmacd, function (err, msg) {
-	  if (err) console.error('Attempted to make friends with grimwire.com but failed!', err.message)
-	  else console.log('Made friends with grimwire.com')
-	})
-	server.feed.add('pub', {address: {host:'grimwire.com', port:2000}}, function(err) {
-		if (err) console.error('Attempted to announce grimwire.com but failed!', err)
-		else console.log('Announced grimwire.com')
-	})
+  // use grimwire.com invite
+  var rpc = server.connect({ host: 'grimwire.com', port: 2000 })
+  var hmacd = server.options.signObjHmac(CONF_INVITE, {
+    keyId: server.options.hash(CONF_INVITE, 'base64'),
+    feed: server.feed.id,
+    ts: Date.now()
+  })
+  rpc.invite.use(hmacd, function (err, msg) {
+    if (err) console.error('Attempted to make friends with grimwire.com but failed!', err.message)
+    else console.log('Made friends with grimwire.com')
+  })
+  server.feed.add('pub', {address: {host:'grimwire.com', port:2000}}, function(err) {
+    if (err) console.error('Attempted to announce grimwire.com but failed!', err)
+    else console.log('Announced grimwire.com')
+  })
 }
