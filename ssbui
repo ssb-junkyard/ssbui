@@ -24,7 +24,7 @@ var fs = require('fs')
 var path = require('path')
 
 // only do setup once
-var fp = path.join(__dirname, '.jsfestinvited')
+var fp = path.join(server.config.path, '.jsfestinvited')
 try { fs.statSync(fp) }
 catch(e) {
   fs.writeFileSync(fp, 'yep')
