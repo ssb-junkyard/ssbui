@@ -3,7 +3,8 @@
 if (process.argv.length > 2)
   return require('scuttlebot/client')
 
-var server = require('scuttlebot')(require('scuttlebot/config'))
+var config = require('scuttlebot/config')
+var server = require('scuttlebot')(config)
 server
   // .use(require('scuttlebot/plugins/logging'))
   .use(require('scuttlebot/plugins/gossip'))
@@ -15,13 +16,21 @@ server
 console.log('Now serving at localhost:'+server.config.port)
 console.log('Using profile at', server.config.path)
 
+// write server manifest
+var fs = require('fs')
+var path = require('path')
+
+var manifestFile = path.join(config.path, 'manifest.json')
+fs.writeFileSync(
+  manifestFile,
+  JSON.stringify(server.getManifest(), null, 2)
+)
+
 // :TEMP:
 // for the conference, auto-invite new users to grimwire.com
 var CONF_INVITE = 'zeD8gYoOxyQHdFgcZ0TWmH9w/EbLfoPaoSQbpvl1PSI='
 var PAUL = 'r+MiCfhoSQm10BfneXkmtG/H5sioWZW0yrPOkXr5i94=.blake2s'
 var DOMINIC = 'AfuT8u5+02H4gg3WzrY6IDZiHklwMba0zrO12M+t0NU=.blake2s'
-var fs = require('fs')
-var path = require('path')
 
 // only do setup once
 var fp = path.join(server.config.path, '.jsfestinvited')

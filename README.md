@@ -42,6 +42,24 @@ For instance:
 ssbui add --type follows --rel follows --feed r+MiCfhoSQm10BfneXkmtG/H5sioWZW0yrPOkXr5i94=.blake2s
 ```
 
+## Generating an Invite Code
+
+Invite codes allow public relays to distribute secrets that allow a set number of local clients to automatically follow and be followed by the public relay.
+
+To generate an invite code, run the following command on your public relay (with ssbui running):
+
+```
+ssbui invite.create <number of times invite code can be consumed>
+```
+
+For instance:
+
+```
+ssbui invite.create 10
+```
+
+To consume the invite code, copy and paste the output of the above `invite.create` command into the "Add contact" dialog of a local ssbui interface.
+
 ## Adding a Public Relay
 
 To add a public relay to your local device (eg one you hosted) run the following command on your local computer (with ssbui running):
