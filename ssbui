@@ -6,11 +6,12 @@ if (process.argv.length > 2)
 var config = require('scuttlebot/config')
 var server = require('scuttlebot')(config)
 server
-  // .use(require('scuttlebot/plugins/logging'))
   .use(require('scuttlebot/plugins/gossip'))
   .use(require('scuttlebot/plugins/replicate'))
   .use(require('scuttlebot/plugins/local'))
+  // .use(require('scuttlebot/plugins/blobs'))
   .use(require('scuttlebot/plugins/invite'))
+  .use(require('scuttlebot/plugins/friends'))
   .use(require('ssbplug-phoenix'))
 
 console.log('Now serving at localhost:'+server.config.port)
@@ -29,24 +30,12 @@ fs.writeFileSync(
 // :TEMP:
 // for the conference, auto-invite new users to grimwire.com
 var CONF_INVITE = 'zeD8gYoOxyQHdFgcZ0TWmH9w/EbLfoPaoSQbpvl1PSI='
-var PAUL = 'r+MiCfhoSQm10BfneXkmtG/H5sioWZW0yrPOkXr5i94=.blake2s'
-var DOMINIC = 'AfuT8u5+02H4gg3WzrY6IDZiHklwMba0zrO12M+t0NU=.blake2s'
 
 // only do setup once
 var fp = path.join(server.config.path, '.jsfestinvited')
 try { fs.statSync(fp) }
 catch(e) {
   fs.writeFileSync(fp, 'yep')
-
-  // follow paul and dominic
-  server.feed.add({ type: 'follow', feed: PAUL, rel: 'follows' }, function(err) {
-    if (err) console.error('Attempted to follow paul but failed!', err)
-    else console.log('Followed paul')
-  })
-  server.feed.add({ type: 'follow', feed: DOMINIC, rel: 'follows' }, function(err) {
-    if (err) console.error('Attempted to follow dominic but failed!', err)
-    else console.log('Followed dominic')
-  })
 
   // use grimwire.com invite
   var rpc = server.connect({ host: 'grimwire.com', port: 2000 })

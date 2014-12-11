@@ -12,8 +12,8 @@
     "url": "git://github.com/pfraze/ssbui.git"
   },
   "dependencies": {
-    "scuttlebot": "~1.0.0",
-    "ssbplug-phoenix": "~1.0.7"
+    "scuttlebot": "~1.1.0",
+    "ssbplug-phoenix": "~1.1.0"
   },
   "author": "Paul Frazee <pfrazee@gmail.com>",
   "license": "MIT"
