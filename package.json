@@ -1,6 +1,6 @@
 {
   "name": "ssbui",
-  "description": "the first client for the ssb network",
+  "description": "ssb install package for desktop users",
   "version": "1.1.0",
   "homepage": "https://github.com/ssbc/ssbui",
   "main": "ssbui",

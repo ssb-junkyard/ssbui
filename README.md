@@ -1,4 +1,4 @@
-# SSBui - The first client for the secure-scuttlebutt network
+# SSBui - ssb install package for desktop users
 
 To setup:
 
