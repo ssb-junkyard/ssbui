@@ -1,7 +1,7 @@
 #! /usr/bin/env node
 
-if (process.argv.length > 2)
-  return require('scuttlebot/client')
+if (process.argv.length > 2 && process.argv[2].charAt(0) !== '-')
+  return require('scuttlebot/bin')
 
 var config = require('scuttlebot/config')
 var server = require('scuttlebot')(config)

@@ -12,7 +12,7 @@
     "url": "git://github.com/ssbc/ssbui.git"
   },
   "dependencies": {
-    "scuttlebot": "~1.1.0",
+    "scuttlebot": "~1.2.0",
     "ssbplug-phoenix": "~1.1.0"
   },
   "author": "Paul Frazee <pfrazee@gmail.com>",
