@@ -15,6 +15,6 @@ var path = require('path')
 var manifestFile = path.join(config.path, 'manifest.json')
 fs.writeFileSync(
   manifestFile,
-  JSON.stringify(server.getManifest(), null, 2)
+  JSON.stringify(sbot.getManifest(), null, 2)
 )
 
