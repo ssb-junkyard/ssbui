@@ -3,16 +3,13 @@
   "description": "ssb install package for desktop users",
   "version": "1.1.0",
   "homepage": "https://github.com/ssbc/ssbui",
-  "main": "ssbui",
-  "bin": {
-    "ssbui": "./ssbui"
-  },
+  "bin": "./ssbui",
   "repository": {
     "type": "git",
     "url": "git://github.com/ssbc/ssbui.git"
   },
   "dependencies": {
-    "scuttlebot": "~1.1.0",
+    "scuttlebot": "~1.2.0",
     "ssbplug-phoenix": "~1.1.0"
   },
   "author": "Paul Frazee <pfrazee@gmail.com>",
