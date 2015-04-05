@@ -27,19 +27,19 @@ For instance:
 
 ```
 ssbui server --hostname goodpeople.com
-ssbui add --type profile --nickname goodpeople.com
+ssbui publish --type profile --nickname goodpeople.com
 ```
 
 To host somebody on the relay, you have the relay follow the target user. You can do that with this command:
 
 ```
-ssbui add --type follows --rel follows --feed <target_id>
+ssbui publish --type follows --rel follows --feed <target_id>
 ```
 
 For instance:
 
 ```
-ssbui add --type follows --rel follows --feed r+MiCfhoSQm10BfneXkmtG/H5sioWZW0yrPOkXr5i94=.blake2s
+ssbui publish --type follows --rel follows --feed r+MiCfhoSQm10BfneXkmtG/H5sioWZW0yrPOkXr5i94=.blake2s
 ```
 
 ## Generating an Invite Code
@@ -65,11 +65,11 @@ To consume the invite code, copy and paste the output of the above `invite.creat
 To add a public relay to your local device (eg one you hosted) run the following command on your local computer (with ssbui running):
 
 ```
-ssbui add --type pub --address <hostname>
+ssbui publish --type pub --address <hostname>
 ```
 
 For instance:
 
 ```
-ssbui add --type pub --address goodpeople.com
+ssbui publish --type pub --address goodpeople.com
 ```
