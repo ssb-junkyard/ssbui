@@ -20,7 +20,7 @@ To setup a public relay host, ssh into your server and run the following command
 ```
 npm install -g ssbui
 ssbui server --hostname <your_domain>   # do this in a screen which you can detach
-ssbui add --type profile --nickname <relay_nickname>
+ssbui publish --type profile --nickname <relay_nickname>
 ```
 
 For instance:
